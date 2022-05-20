@@ -6,11 +6,11 @@ import java.util.Set;
 public class Solution {
 
 	/*
-	 *	Problem:  Contains Duplicate (https://leetcode.com/problems/contains-duplicate/)
-	 *	Solution: https://www.youtube.com/watch?v=3OamzN90kPg
-	 *	Note: 	  hashset to get unique values in array, to check for duplicates easily
-	 *	Time:     O(n)
-	 *	Space: 	  O(n)
+	 * Problem:  Contains Duplicate (https://leetcode.com/problems/contains-duplicate/) 
+	 * Solution: https://www.youtube.com/watch?v=3OamzN90kPg
+	 * Note:     hashset to get unique values in array, to check for duplicates easily
+	 * Time:     O(n)
+	 * Space:    O(n)
 	 */
 	public boolean containsDuplicate(int[] nums) {
 		Set<Integer> set1 = new HashSet<>();
@@ -18,5 +18,31 @@ public class Solution {
 			set1.add(i);
 		}
 		return set1.size() == nums.length;
-    }
+	}
+
+	/*
+	 * Problem:  Best Time to Buy and Sell Stock (https://leetcode.com/problems/best-time-to-buy-and-sell-stock/) 
+	 * Solution: https://www.youtube.com/watch?v=1pkOgXD63yU 
+	 * Note:     find local min and search for local max, sliding window (two pointer); 
+	 * Time:     O(n) 
+	 * Space:    O(1)
+	 */
+	public int maxProfit(int[] prices) {
+		int left = 0;
+		int right = 1;
+		int maxProfit = 0;
+
+		while (right < prices.length) {
+			if (prices[left] < prices[right]) {
+				int profit = prices[right] - prices[left];
+				maxProfit = Math.max(maxProfit, profit);
+			} else {
+				left = right;
+			}
+			right += 1;
+		}
+
+		return maxProfit;
+	}
+
 }
