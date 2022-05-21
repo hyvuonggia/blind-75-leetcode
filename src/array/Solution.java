@@ -1,12 +1,14 @@
 package array;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 public class Solution {
 
 	/*
-	 * Problem:  Contains Duplicate (https://leetcode.com/problems/contains-duplicate/) 
+	 * Problem:  Contains Duplicate ( https://leetcode.com/problems/contains-duplicate/ ) 
 	 * Solution: https://www.youtube.com/watch?v=3OamzN90kPg
 	 * Note:     hashset to get unique values in array, to check for duplicates easily
 	 * Time:     O(n)
@@ -21,9 +23,9 @@ public class Solution {
 	}
 
 	/*
-	 * Problem:  Best Time to Buy and Sell Stock (https://leetcode.com/problems/best-time-to-buy-and-sell-stock/) 
+	 * Problem:  Best Time to Buy and Sell Stock ( https://leetcode.com/problems/best-time-to-buy-and-sell-stock/ ) 
 	 * Solution: https://www.youtube.com/watch?v=1pkOgXD63yU 
-	 * Note:     find local min and search for local max, sliding window (two pointer); 
+	 * Note:     find local min and search for local max, sliding window
 	 * Time:     O(n) 
 	 * Space:    O(1)
 	 */
@@ -43,6 +45,26 @@ public class Solution {
 		}
 
 		return maxProfit;
+	}
+
+	/*
+	 * Problem:  Two Sum ( https://leetcode.com/problems/two-sum/ ) 
+	 * Solution: https://www.youtube.com/watch?v=KLlXCFG5TnA
+	 * Note:     use hash map to instantly check for difference value, map will add index of last occurrence of a num, don’t use same element twice;
+	 * Time:     O(n) 
+	 * Space:    O(n)
+	 */
+	public int[] twoSum(int[] nums, int target) {
+		Map<Integer, Integer> map = new HashMap<>();
+
+		for (int i = 0; i < nums.length; i++) {
+			int diff = target - nums[i];
+			if (map.containsKey(diff)) {
+				return new int[] { map.get(diff), i };
+			}
+			map.put(nums[i], i);
+		}
+		return null;
 	}
 
 }

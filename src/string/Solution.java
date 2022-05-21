@@ -4,9 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Solution {
-	
+
 	/*
-	 *	Problem:  Valid Anagram (https://leetcode.com/problems/valid-anagram/)
+	 *	Problem:  Valid Anagram ( https://leetcode.com/problems/valid-anagram/ )
 	 *	Solution: https://www.youtube.com/watch?v=9UtInBqnCgA
 	 *	Note: 	  hashmap to count each char in str1, decrement for str2;
 	 *	Time: 	  O(s+t)
@@ -16,9 +16,9 @@ public class Solution {
 		if (s.length() != t.length()) {
 			return false;
 		}
-		
+
 		Map<Character, Integer> map1 = new HashMap<>();
-		
+
 		for (int i = 0; i < s.length(); i++) {
 			char c = s.charAt(i);
 			if (map1.containsKey(c)) {
@@ -27,7 +27,7 @@ public class Solution {
 				map1.put(c, 1);
 			}
 		}
-		
+
 		for (int i = 0; i < s.length(); i++) {
 			char c = t.charAt(i);
 			if (map1.containsKey(c)) {
@@ -40,10 +40,10 @@ public class Solution {
 				return false;
 			}
 		}
-		
-		if(map1.size() == 0) {
+
+		if (map1.size() == 0) {
 			return true;
 		}
 		return false;
-    }
+	}
 }
